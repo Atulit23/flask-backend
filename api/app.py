@@ -9,10 +9,8 @@ response = requests.get(api_url)
 if response.status_code == 200:
     api_data = response.json()
     comments = api_data['comments']
-    print(api_data['comments'][0])
 else:
     print(f"Error: {response.status_code}")
-    print(response.text)
 
 app = Flask(__name__)
 
@@ -22,7 +20,6 @@ def returnNonNoneFilters(filters):
     keys = list(filters.keys())
     values = list(filters.values())
 
-    print(values)
 
     for i in range(len(values)):
         if values[i]['value'] is not None and values[i]['value'] != '':
@@ -81,9 +78,6 @@ def index():
     reply_to = request.args.get('reply_to')
     search_text = request.args.get('search_text')
 
-    print(at_from)
-    print(at_to)
-
     filters = {
         'search_author': {'value': search_author, 'usedIn': 'author'},
         'at_from': {'value': at_from, 'usedIn': 'at'},
@@ -96,8 +90,6 @@ def index():
     }
 
     updated_filters = returnNonNoneFilters(filters)
-
-    print(updated_filters)
 
     data_to_return = []
     if (search_author == None and at_from == None and at_to == None and like_from == None and like_to == None and reply_from == None and reply_to == None and search_text == None):
