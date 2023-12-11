@@ -4,7 +4,7 @@ from datetime import datetime
 
 api_url = 'https://app.ylytic.com/ylytic/test'
 
-response = requests.get(api_url)
+response = requests.get(api_url, verify=False )
 
 if response.status_code == 200:
     api_data = response.json()
