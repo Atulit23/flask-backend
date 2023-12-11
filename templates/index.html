@@ -1,0 +1,37 @@
+{% extends 'base.html'%} {% block head %} {% endblock %} {% block body %}
+
+<div class="container">
+  <div class="inputs">
+    <input type="text" name="author" id="author" placeholder="Author" />
+    <input type="number" name="likefrom" id="likefrom" placeholder="likefrom" />
+    <input type="number" name="liketo" id="liketo" placeholder="liketo" />
+    <input type="number" name="replyfrom" id="replyfrom" placeholder="replyfrom" />
+    <input type="number" name="replyto" id="replyto" placeholder="replyto" />
+    <input type="text" name="text" id="text" placeholder="text" />
+    <input type="date" name="startdate" id="startdate" placeholder="startdate" />
+    <input type="date" name="enddate" id="enddate" placeholder="enddate" />
+    <button onclick="submitRequest()">Submit</button>
+  </div>
+  <div class="data">
+    <table>
+      <thead>
+        <th>At</th>
+        <th>Author</th>
+        <th>Like</th>
+        <th>Reply</th>
+        <th>Text</th>
+      </thead>
+      {% for comment in comments %}
+        <tbody>
+            <td>{{comment.at}}</td>
+            <td>{{comment.author}}</td>
+            <td>{{comment.like}}</td>
+            <td>{{comment.reply}}</td>
+            <td>{{comment.text}}</td>
+        </tbody>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock %}
